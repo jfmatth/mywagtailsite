@@ -1,6 +1,5 @@
 # Django project
 /media/
-/static/
 *.sqlite3
 
 # Python and others
@@ -22,6 +21,7 @@ coverage
 # Distribution / packaging
 .Python
 env/
+.venv/
 build/
 develop-eggs/
 dist/
