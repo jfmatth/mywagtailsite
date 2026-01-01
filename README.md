@@ -20,16 +20,18 @@ Wagtail ```DJANGO_SETTINGS_MODULE``` defaults to ```core.dev.py```
 Just Django ```runserver``` nothing fancy.
 
 ### Podman local
-Need a Postgres DB to host all this good stuff
+docker-compose for the win here
 
 ```
-podman pod create -p 8000:8000 wagtail
-podman volume create dbdata
+podman compose up --build
+```
 
-podman run -d `
---name wagtail-db `
---pod wagtail `
---env-file ENV-dev `
--v dbdata:/var/lib/postgresql/data/ `
-postgres:17
+Migrate the DB
+```
+podman exec -it mywagtailsite-web-1 python manage.py migrate --no-input
+```
+
+Create a super user
+```
+podman exec -it mywagtailsite-web-1  python manage.py createsuperuser
 ```
