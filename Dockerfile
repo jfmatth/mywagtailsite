@@ -38,6 +38,7 @@
     # copy application files to WORKDIR (/app)
     COPY manage.py /app
     COPY core/ /app/core
+    COPY blog/ /app/blog
     COPY home/ /app/home
     COPY search/ /app/search
 
